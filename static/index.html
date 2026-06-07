@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>英语口语 AI 陪练</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">AI Speaking Coach</p>
+          <h1>英语口语 AI 陪练</h1>
+        </div>
+        <div class="status" id="engineStatus">初始化中</div>
+      </section>
+
+      <section class="control-panel">
+        <label>
+          场景
+          <select id="scenario">
+            <option value="restaurant">餐厅点餐</option>
+            <option value="travel">旅行问路</option>
+            <option value="interview">求职面试</option>
+            <option value="meeting">商务会议</option>
+            <option value="ielts">雅思口语</option>
+          </select>
+        </label>
+        <label>
+          水平
+          <select id="level">
+            <option value="A2">A2</option>
+            <option value="B1" selected>B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+          </select>
+        </label>
+        <label class="toggle">
+          <input id="autoListen" type="checkbox" checked />
+          <span>自动接话</span>
+        </label>
+        <button id="startBtn">开始练习</button>
+      </section>
+
+      <section class="goal-band">
+        <div>
+          <strong id="scenarioTitle">选择一个场景开始</strong>
+          <p id="scenarioGoal">系统会用英语扮演场景角色，并在每轮回答后给出发音、语法和表达反馈。</p>
+        </div>
+        <div class="progress-wrap">
+          <span>场景完成度</span>
+          <div class="progress"><i id="slotProgress"></i></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="dialogue">
+          <div class="dialogue-head">
+            <h2>实时对话</h2>
+            <button id="micBtn" disabled>点击说话</button>
+          </div>
+          <div class="messages" id="messages"></div>
+          <div class="input-row">
+            <input id="manualText" type="text" placeholder="也可以在这里输入英文回答" />
+            <button id="sendTextBtn" disabled>发送</button>
+            <button id="reviseBtn" disabled>修正上一句</button>
+          </div>
+          <div class="live-line" id="liveLine">等待开始</div>
+        </div>
+
+        <aside class="coach">
+          <h2>即时反馈</h2>
+          <div class="score-grid">
+            <div><span id="overallScore">0</span><small>综合</small></div>
+            <div><span id="pronScore">0</span><small>发音</small></div>
+            <div><span id="fluencyScore">0</span><small>流利</small></div>
+            <div><span id="grammarScore">0</span><small>语法</small></div>
+          </div>
+
+          <div class="metric-row"><span>识别意图</span><strong id="intent">-</strong></div>
+          <div class="metric-row"><span>语速</span><strong id="pace">-</strong></div>
+          <div class="metric-row"><span>端到端延迟</span><strong id="latency">-</strong></div>
+
+          <h3>音素 / GOP 反馈</h3>
+          <ul id="phonemes" class="feedback-list"></ul>
+          <h3>语法纠错</h3>
+          <ul id="corrections" class="feedback-list"></ul>
+          <h3>表达升级</h3>
+          <ul id="tips" class="feedback-list"></ul>
+
+          <h3>低延迟流水线</h3>
+          <div id="pipeline" class="pipeline"></div>
+        </aside>
+      </section>
+
+      <section class="summary-band">
+        <button id="summaryBtn" disabled>生成课后总结</button>
+        <button id="deleteDataBtn">删除本地学习数据</button>
+        <div id="summary" class="summary"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
