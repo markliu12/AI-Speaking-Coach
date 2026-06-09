@@ -8,12 +8,6 @@
 python app.py
 ```
 
-如果系统 `python` 命令不可用，可使用 Codex 工作区自带解释器：
-
-```powershell
-& "C:\Users\Mark\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" app.py
-```
-
 浏览器打开：
 
 ```text
@@ -51,15 +45,5 @@ http://127.0.0.1:8000
 - `POST /api/revise`：修正上一句 ASR 文本
 - `POST /api/summary`：生成课后总结
 - `POST /api/delete-user-data`：删除本地用户数据
-
-## 可选 AI 增强
-
-```powershell
-$env:OPENAI_API_KEY="你的 API Key"
-$env:OPENAI_MODEL="gpt-4.1-mini"
-python app.py
-```
-
-如果 API 不可用，系统会自动回退到本地对话管理器。
 
 demo:https://www.bilibili.com/video/BV11cE46wETp/
